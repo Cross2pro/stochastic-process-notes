@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>随机过程课后题第四章答案</title>
+  <title>随机过程课后题第五章答案</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,904 +28,546 @@
   type="text/javascript"></script>
 </head>
 <body>
-<h1 id="随机过程课后题第四章答案">随机过程课后题第四章答案</h1>
-<h2 id="section">4</h2>
-<h3 id="第一步证明-xt-是平稳过程宽平稳">第一步：证明 <span
-class="math inline">\(\{X(t)\}\)</span> 是平稳过程（宽平稳）</h3>
-<p>要证明一个过程是宽平稳的，我们需要验证两个条件： 1.
-<strong>均值函数</strong> <span class="math inline">\(E[X(t)]\)</span>
-是常数。 2. <strong>自相关函数</strong> <span
-class="math inline">\(R_X(t_1, t_2)\)</span> 只与时间差 <span
-class="math inline">\(\tau = t_1 - t_2\)</span> 有关。</p>
-<p>已知 <span class="math inline">\(\alpha \sim U(0,
-1)\)</span>，其概率密度函数为： <span class="math display">\[
-f(\alpha) = \begin{cases} 1, &amp; 0 &lt; \alpha &lt; 1 \\ 0, &amp;
-\text{其他} \end{cases}
-\]</span></p>
-<h4 id="验证均值">1. 验证均值</h4>
-<p>计算 <span class="math inline">\(X(t)\)</span> 的数学期望： <span
-class="math display">\[
-E[X(t)] = \int_{-\infty}^{+\infty} x f(x) dx = \int_{0}^{1} \sin(2\pi
-\alpha t) \cdot 1 \, d\alpha
-\]</span> 由于 <span class="math inline">\(t\)</span> 是整数 (<span
-class="math inline">\(t=1, 2, \dots\)</span>)，积分结果为： <span
-class="math display">\[
-E[X(t)] = \left[ -\frac{\cos(2\pi \alpha t)}{2\pi t} \right]_{0}^{1} =
--\frac{1}{2\pi t} (\cos(2\pi t) - \cos(0))
-\]</span> 因为 <span class="math inline">\(t\)</span> 是整数，<span
-class="math inline">\(\cos(2\pi t) = 1\)</span>，且 <span
-class="math inline">\(\cos(0)=1\)</span>，所以： <span
-class="math display">\[
-E[X(t)] = -\frac{1}{2\pi t} (1 - 1) = 0
-\]</span> <strong>结论：</strong> 均值为常数 0，<strong>满足条件
-1</strong>。</p>
-<h4 id="验证自相关函数">2. 验证自相关函数</h4>
-<p>计算 <span class="math inline">\(R_X(t, t+\tau)\)</span>，令 <span
-class="math inline">\(t_1 = t, t_2 = t+\tau\)</span>： <span
-class="math display">\[
-R_X(t, t+\tau) = E[X(t)X(t+\tau)] = E[\sin(2\pi \alpha t) \sin(2\pi
-\alpha (t+\tau))]
-\]</span> 利用积化和差公式 <span class="math inline">\(\sin A \sin B =
-\frac{1}{2}[\cos(A-B) - \cos(A+B)]\)</span>： <span
-class="math display">\[
-R_X(t, t+\tau) = \frac{1}{2} E[\cos(2\pi \alpha \tau) - \cos(2\pi \alpha
-(2t+\tau))]
-\]</span> 利用期望的线性性质分开计算： <span class="math display">\[
-= \frac{1}{2} E[\cos(2\pi \alpha \tau)] - \frac{1}{2} E[\cos(2\pi \alpha
-(2t+\tau))]
-\]</span></p>
-<p>我们来分别分析这两个期望值的积分： * <strong>第一项</strong> <span
-class="math inline">\(E[\cos(2\pi \alpha \tau)]\)</span>： <span
-class="math display">\[
-\int_{0}^{1} \cos(2\pi \alpha \tau) d\alpha
-\]</span> * 当 <span class="math inline">\(\tau = 0\)</span> 时，<span
-class="math inline">\(\int_{0}^{1} 1 \, d\alpha = 1\)</span>。 * 当
-<span class="math inline">\(\tau \neq 0\)</span> (且为整数) 时，<span
-class="math inline">\(\left[ \frac{\sin(2\pi \alpha \tau)}{2\pi \tau}
-\right]_0^1 = 0\)</span>。 * <strong>第二项</strong> <span
-class="math inline">\(E[\cos(2\pi \alpha (2t+\tau))]\)</span>： 由于
-<span class="math inline">\(t \ge 1\)</span>，系数 <span
-class="math inline">\((2t+\tau)\)</span> 是非零整数（除非极特殊情况如
-<span
-class="math inline">\(\tau=-2t\)</span>，但在自相关定义中我们通常关注平稳性结构，且即使非零整数，在
-<span class="math inline">\(0\)</span> 到 <span
-class="math inline">\(1\)</span> 的完整周期上积分也是 0）。 <span
-class="math display">\[
-\int_{0}^{1} \cos(2\pi \alpha (2t+\tau)) d\alpha = 0 \quad
-(\text{因为是在完整周期上的积分})
-\]</span></p>
-<p>因此，自相关函数为： <span class="math display">\[
-R_X(\tau) = \begin{cases} 1/2, &amp; \tau = 0 \\ 0, &amp; \tau \neq 0
-\end{cases}
-\]</span> <strong>结论：</strong> 自相关函数只与时间差 <span
-class="math inline">\(\tau\)</span> 有关，与具体时刻 <span
-class="math inline">\(t\)</span> 无关，<strong>满足条件 2</strong>。</p>
-<p><strong>综上所述，<span class="math inline">\(\{X(t)\}\)</span>
-是宽平稳过程。</strong></p>
-<hr />
-<h3 id="第二步证明-xt-不是严平稳过程">第二步：证明 <span
-class="math inline">\(\{X(t)\}\)</span> 不是严平稳过程</h3>
-<p><strong>严平稳的定义</strong>要求：对于任意 <span
-class="math inline">\(n\)</span> 和时间位移 <span
-class="math inline">\(k\)</span>，联合分布 <span
-class="math inline">\((X(t_1), \dots, X(t_n))\)</span> 必须与 <span
-class="math inline">\((X(t_1+k), \dots, X(t_n+k))\)</span>
-完全相同。</p>
-<p>要证明<strong>不是</strong>严平稳，只需要找到一个反例，说明其联合分布随时间平移发生了变化。</p>
-<p>我们考察 <span class="math inline">\(t=1\)</span> 和 <span
-class="math inline">\(t=2\)</span>
-时刻的随机变量之间的<strong>依赖关系</strong>。</p>
+<h1 id="随机过程课后题第五章答案">随机过程课后题第五章答案</h1>
+<h2
+id="黑板上的题.-设-x_n-n-in-t-是一个齐次马尔可夫链-其状态空间-i-012-其一步转">（黑板上的题）.
+设 <span class="math inline">\(\{X_n, n \in T\}\)</span>
+是一个齐次马尔可夫链, 其状态空间 <span class="math inline">\(I =
+\{0,1,2\}\)</span> , 其一步转</h2>
+<p><span class="math inline">\(P = \begin{pmatrix} \frac{3}{4} &amp;
+\frac{1}{4} &amp; 0 \\ \frac{1}{4} &amp; \frac{1}{2} &amp; \frac{1}{4}
+\\ 0 &amp; \frac{3}{4} &amp; \frac{1}{4} \end{pmatrix}\)</span></p>
+<p>移概率矩阵为 <span class="math inline">\(p_i(0) = p_i(X_0 =
+i)\)</span> = <span class="math inline">\(\frac{1}{3}, \quad i =
+0,1,2\)</span>, 求其初始状态的概率分布为：</p>
 <ol type="1">
-<li><p><strong>观察 <span class="math inline">\(X(1)\)</span> 和 <span
-class="math inline">\(X(2)\)</span> 的关系：</strong> <span
-class="math display">\[X(1) = \sin(2\pi \alpha)\]</span> <span
-class="math display">\[X(2) = \sin(4\pi \alpha) = 2\sin(2\pi
-\alpha)\cos(2\pi \alpha)\]</span>
-这里存在一个确定的函数关系（尽管有符号模糊性，但二者强相关）。具体来说，如果不考虑符号，<span
-class="math inline">\(\left|X(2)\right| =
-2\left|X(1)\right|\sqrt{1-X(1)^2}\)</span>。</p></li>
-<li><p><strong>观察平移后的 <span class="math inline">\(X(2)\)</span> 和
-<span class="math inline">\(X(3)\)</span> 的关系：</strong>
-如果我们把时间平移 1 个单位，原来的 <span class="math inline">\((X(1),
-X(2))\)</span> 变成了 <span class="math inline">\((X(2),
-X(3))\)</span>。 <span class="math display">\[X(2) = \sin(4\pi
-\alpha)\]</span> <span class="math display">\[X(3) = \sin(6\pi
-\alpha)\]</span> 利用三倍角公式思想，<span
-class="math inline">\(\sin(6\pi \alpha)\)</span> 不能用 <span
-class="math inline">\(\sin(4\pi \alpha)\)</span> 以类似于 “<span
-class="math inline">\(2x\sqrt{1-x^2}\)</span>” 的形式简单表示。</p></li>
+<li><p>求 <span class="math inline">\(P\{X_2=1\}\)</span> :</p></li>
+<li><p>求 <span class="math inline">\(P\{X_{n+2}=2|X_n=1\}\)</span>
+:</p></li>
+<li><p>求 <span class="math inline">\(P\{X_0=1, X_1=2, X_2=1\}\)</span>
+:</p></li>
+<li><p>求 <span class="math inline">\(P\{X_{0}=2|X_1=1,X_2=0\}\)</span>
+:</p></li>
+<li><p>讨论此链是否具有遍历性. 若是遍历的求其极限分布.</p></li>
 </ol>
-<p>更直观地说，<span class="math inline">\(X(1)\)</span> 是基波，<span
-class="math inline">\(X(2)\)</span> 是二次谐波。<span
-class="math inline">\(X(1)\)</span> 和 <span
-class="math inline">\(X(2)\)</span>
-之间的函数约束关系（由二倍角公式决定），与 <span
-class="math inline">\(X(2)\)</span> 和 <span
-class="math inline">\(X(3)\)</span> 之间的函数约束关系（由 <span
-class="math inline">\(2\omega\)</span> 和 <span
-class="math inline">\(3\omega\)</span>
-的关系决定）是<strong>不一样的</strong>。</p>
-<p><strong>结论：</strong> 由于 <span class="math inline">\((X(1),
-X(2))\)</span> 的联合概率分布（由二倍角关系约束）与 <span
-class="math inline">\((X(2), X(3))\)</span> 的联合概率分布（由 2:3
-频率关系约束）结构不同。 即： <span class="math display">\[
-F_{X(1), X(2)}(x_1, x_2) \neq F_{X(2), X(3)}(x_1, x_2)
-\]</span> 不满足位移不变性。</p>
-<p><strong>因此，<span class="math inline">\(\{X(t)\}\)</span>
-不是严平稳过程。</strong></p>
 <hr />
-<h2 id="section-1">6</h2>
-<h3 id="详细证明步骤考试规范写法">详细证明步骤（考试规范写法）</h3>
-<h4 id="第一步说明-xt-服从正态分布">第一步：说明 <span
-class="math inline">\(\{X(t)\}\)</span> 服从正态分布</h4>
-<p>由于 <span class="math inline">\(\{Y(t), t \ge 0\}\)</span>
-是正态过程，而 <span class="math inline">\(X(t) = Y(t+b) - Y(t)\)</span>
-是 <span class="math inline">\(Y(t)\)</span>
-的线性组合（线性变换），根据正态过程的性质，<span
-class="math inline">\(\{X(t), t \ge 0\}\)</span>
-也是一个<strong>正态过程</strong>。</p>
-<blockquote>
-<p><strong>注</strong>：这一点至关重要，是后续由“宽”推“严”的基石。</p>
-</blockquote>
-<h4 id="第二步证明-xt-是宽平稳过程">第二步：证明 <span
-class="math inline">\(\{X(t)\}\)</span> 是宽平稳过程</h4>
-<p>我们需要验证 <span class="math inline">\(X(t)\)</span>
-的均值函数为常数，且协方差函数只与时间差 <span
-class="math inline">\(\tau\)</span> 有关。</p>
-<p><strong>1. 计算均值函数 <span
-class="math inline">\(m_X(t)\)</span></strong> 已知 <span
-class="math inline">\(m_Y(t) = \alpha + \beta t\)</span>，则： <span
+<h3 id="求-px_21">(1) 求 <span
+class="math inline">\(P\{X_2=1\}\)</span></h3>
+<p>这是求时刻 <span class="math inline">\(n=2\)</span>
+时的<strong>绝对概率</strong>。 根据公式 <span
+class="math inline">\(\pi_n = \pi_0 P^n\)</span> 或者 <span
+class="math inline">\(\pi_{n} = \pi_{n-1} P\)</span>，我们可以先求出时刻
+1 的分布，再求时刻 2。</p>
+<p><strong>第一步：求时刻 1 的分布 <span
+class="math inline">\(\pi_1\)</span></strong> <span
 class="math display">\[
 \begin{aligned}
-m_X(t) &amp;= E[X(t)] \\
-&amp;= E[Y(t+b) - Y(t)] \\
-&amp;= E[Y(t+b)] - E[Y(t)] \\
-&amp;= [\alpha + \beta(t+b)] - [\alpha + \beta t] \\
-&amp;= \alpha + \beta t + \beta b - \alpha - \beta t \\
-&amp;= \beta b
+P(X_1=1) &amp;= \sum_{i=0}^2 P(X_0=i) P(X_1=1 | X_0=i) \\
+&amp;= \frac{1}{3} \times p_{01} + \frac{1}{3} \times p_{11} +
+\frac{1}{3} \times p_{21} \\
+&amp;= \frac{1}{3} \times \frac{1}{4} + \frac{1}{3} \times \frac{1}{2} +
+\frac{1}{3} \times \frac{3}{4} \\
+&amp;= \frac{1}{3} (\frac{1}{4} + \frac{2}{4} + \frac{3}{4}) =
+\frac{1}{3} \times \frac{6}{4} = \frac{1}{2}
 \end{aligned}
-\]</span> <strong>结论：</strong> <span class="math inline">\(m_X(t) =
-\beta b\)</span> 是一个常数（与 <span class="math inline">\(t\)</span>
-无关）。</p>
-<p><strong>2. 计算自协方差函数 <span class="math inline">\(C_X(t,
-t+\tau)\)</span></strong> 根据定义，<span class="math inline">\(C_X(t,
-t+\tau) = \text{Cov}(X(t), X(t+\tau))\)</span>。 代入 <span
-class="math inline">\(X(t)\)</span> 的表达式： <span
+\]</span> 同理可算出其他两个状态（为了下一步计算）： <span
+class="math inline">\(P(X_1=0) = \frac{1}{3}(p_{00}+p_{10}+p_{20}) =
+\frac{1}{3}(\frac{3}{4}+\frac{1}{4}+0) = \frac{1}{3}\)</span> <span
+class="math inline">\(P(X_1=2) = \frac{1}{3}(p_{02}+p_{12}+p_{22}) =
+\frac{1}{3}(0+\frac{1}{4}+\frac{1}{4}) = \frac{1}{6}\)</span>
+所以，<span class="math inline">\(\pi_1 = (\frac{1}{3}, \frac{1}{2},
+\frac{1}{6})\)</span>。</p>
+<p><strong>第二步：求时刻 2 状态为 1 的概率</strong> <span
 class="math display">\[
-C_X(t, t+\tau) = \text{Cov}(Y(t+b) - Y(t), \ Y(t+\tau+b) - Y(t+\tau))
-\]</span> 利用协方差的双线性性质 <span
-class="math inline">\(\text{Cov}(A-B, C-D) = \text{Cov}(A,C) -
-\text{Cov}(A,D) - \text{Cov}(B,C) +
-\text{Cov}(B,D)\)</span>，我们将上式展开为四项。</p>
-<p>已知 <span class="math inline">\(C_Y(t_1, t_2) = e^{-\alpha |t_1 -
-t_2|}\)</span>，即只取决于两点的时间差。</p>
-<ul>
-<li><strong>第一项</strong>：<span
-class="math inline">\(\text{Cov}(Y(t+b), Y(t+\tau+b))\)</span> 时间差为
-<span class="math inline">\((t+\tau+b) - (t+b) = \tau\)</span>。 <span
-class="math inline">\(\implies e^{-\alpha |\tau|}\)</span></li>
-<li><strong>第二项</strong>：<span
-class="math inline">\(-\text{Cov}(Y(t+b), Y(t+\tau))\)</span> 时间差为
-<span class="math inline">\((t+\tau) - (t+b) = \tau - b\)</span>。 <span
-class="math inline">\(\implies -e^{-\alpha |\tau - b|}\)</span></li>
-<li><strong>第三项</strong>：<span
-class="math inline">\(-\text{Cov}(Y(t), Y(t+\tau+b))\)</span> 时间差为
-<span class="math inline">\((t+\tau+b) - t = \tau + b\)</span>。 <span
-class="math inline">\(\implies -e^{-\alpha |\tau + b|}\)</span></li>
-<li><strong>第四项</strong>：<span
-class="math inline">\(\text{Cov}(Y(t), Y(t+\tau))\)</span> 时间差为
-<span class="math inline">\((t+\tau) - t = \tau\)</span>。 <span
-class="math inline">\(\implies e^{-\alpha |\tau|}\)</span></li>
-</ul>
-<p>将四项合并： <span class="math display">\[
-C_X(t, t+\tau) = 2e^{-\alpha |\tau|} - e^{-\alpha |\tau - b|} -
-e^{-\alpha |\tau + b|}
-\]</span> <strong>结论：</strong> 上式结果只包含 <span
-class="math inline">\(\tau\)</span> 和常数 <span
-class="math inline">\(\alpha, b\)</span>，与具体时刻 <span
-class="math inline">\(t\)</span> 无关。记为 <span
-class="math inline">\(C_X(\tau)\)</span>。</p>
-<p><strong>综上，<span class="math inline">\(\{X(t)\}\)</span>
-是宽平稳过程。</strong></p>
-<h4 id="第三步得出严平稳结论">第三步：得出严平稳结论</h4>
-<p>由于 <span class="math inline">\(\{X(t)\}\)</span>
-是<strong>正态过程</strong>，且已证明它是<strong>宽平稳</strong>的。
-根据正态过程的性质：<strong>正态过程的宽平稳性与严平稳性是等价的</strong>。
-因此，<span class="math inline">\(\{X(t), t \ge 0\}\)</span>
-是严平稳过程。</p>
-<hr />
-<h2 id="section-2">7</h2>
-<p>解答这道题需要验证三个条件。</p>
-<p><strong>联合平稳（Jointly Wide-Sense Stationary）的定义</strong>：
-如果两个随机过程 <span class="math inline">\(\{X(t)\}\)</span> 和 <span
-class="math inline">\(\{Y(t)\}\)</span>
-满足以下三个条件，则称它们是联合平稳的： 1. <span
-class="math inline">\(\{X(t)\}\)</span> 是宽平稳过程。 2. <span
-class="math inline">\(\{Y(t)\}\)</span> 是宽平稳过程。 3. 互相关函数
-<span class="math inline">\(R_{XY}(t, t+\tau) =
-E[X(t)Y(t+\tau)]\)</span> 只与时间差 <span
-class="math inline">\(\tau\)</span> 有关，而与具体时刻 <span
-class="math inline">\(t\)</span> 无关。</p>
-<p>我们依次进行证明。</p>
-<hr />
-<h3 id="第一步证明-xt-是平稳过程">第一步：证明 <span
-class="math inline">\(\{X(t)\}\)</span> 是平稳过程</h3>
-<ol type="1">
-<li><p><strong>均值</strong>： <span class="math display">\[
-E[X(t)] = E[X \cos(\alpha t) + Y \sin(\alpha t)] = E[X]\cos(\alpha t) +
-E[Y]\sin(\alpha t)
-\]</span> 已知 <span class="math inline">\(E[X]=0,
-E[Y]=0\)</span>，所以： <span class="math display">\[E[X(t)] = 0 \quad
-(\text{常数})\]</span></p></li>
-<li><p><strong>自相关函数</strong> <span class="math inline">\(R_X(t,
-t+\tau)\)</span>： <span class="math display">\[
-R_X(t, t+\tau) = E[X(t)X(t+\tau)]
-\]</span> 代入表达式： <span class="math display">\[
-= E\Big[ (X \cos(\alpha t) + Y \sin(\alpha t)) \cdot (X
-\cos(\alpha(t+\tau)) + Y \sin(\alpha(t+\tau))) \Big]
-\]</span> 展开利用 <span
-class="math inline">\(E[XY]=0\)</span>（不相关且均值为0）以及 <span
-class="math inline">\(E[X^2]=E[Y^2]=\sigma^2\)</span>： <span
-class="math display">\[
-= \sigma^2 \cos(\alpha t)\cos(\alpha(t+\tau)) + \sigma^2 \sin(\alpha
-t)\sin(\alpha(t+\tau))
-\]</span> 利用三角恒等式 <span class="math inline">\(\cos A \cos B +
-\sin A \sin B = \cos(A-B)\)</span>： <span class="math display">\[
-= \sigma^2 \cos(\alpha t - \alpha(t+\tau)) = \sigma^2 \cos(-\alpha \tau)
-= \sigma^2 \cos(\alpha \tau)
-\]</span> <strong>结论：</strong> <span
-class="math inline">\(R_X\)</span> 只与 <span
-class="math inline">\(\tau\)</span> 有关，故 <span
-class="math inline">\(\{X(t)\}\)</span> 是平稳过程。</p></li>
-</ol>
-<hr />
-<h3 id="第二步证明-yt-是平稳过程">第二步：证明 <span
-class="math inline">\(\{Y(t)\}\)</span> 是平稳过程</h3>
-<ol type="1">
-<li><p><strong>均值</strong>： 同理，<span class="math inline">\(E[Y(t)]
-= E[Y]\cos(\alpha t) + E[X]\sin(\alpha t) = 0\)</span>。</p></li>
-<li><p><strong>自相关函数</strong> <span class="math inline">\(R_Y(t,
-t+\tau)\)</span>： <span class="math display">\[
-R_Y(t, t+\tau) = E[Y(t)Y(t+\tau)]
-\]</span> 展开结构与 <span class="math inline">\(X(t)\)</span>
-完全一致（只是系数 <span class="math inline">\(X\)</span> 和 <span
-class="math inline">\(Y\)</span> 交换了位置，但它们的方差相同）： <span
-class="math display">\[
-= \sigma^2 \cos(\alpha t)\cos(\alpha(t+\tau)) + \sigma^2 \sin(\alpha
-t)\sin(\alpha(t+\tau))
-\]</span> <span class="math display">\[
-= \sigma^2 \cos(\alpha \tau)
-\]</span> <strong>结论：</strong> <span
-class="math inline">\(R_Y\)</span> 只与 <span
-class="math inline">\(\tau\)</span> 有关，故 <span
-class="math inline">\(\{Y(t)\}\)</span> 是平稳过程。</p></li>
-</ol>
-<hr />
-<h3 id="第三步计算互相关函数-r_xyt-ttau">第三步：计算互相关函数 <span
-class="math inline">\(R_{XY}(t, t+\tau)\)</span></h3>
-<p><strong>注意：</strong>
-这里是这道题的关键点。如果题目完全按照你给出的公式，<strong>这步会出现问题</strong>。请仔细看推导：</p>
-<p><span class="math display">\[
-R_{XY}(t, t+\tau) = E[X(t)Y(t+\tau)]
-\]</span> 代入 <span class="math inline">\(X(t)\)</span> 和 <span
-class="math inline">\(Y(t)\)</span>： <span class="math display">\[
-= E\Big[ (X \cos(\alpha t) + Y \sin(\alpha t)) \cdot (Y
-\cos(\alpha(t+\tau)) + X \sin(\alpha(t+\tau))) \Big]
-\]</span> 展开括号（利用 <span class="math inline">\(E[X^2]=\sigma^2,
-E[Y^2]=\sigma^2, E[XY]=0\)</span>）： 1. <span class="math inline">\(X
-\cdot Y\)</span> 项：均值为 0。 2. <span class="math inline">\(X \cdot
-X\)</span> 项：<span class="math inline">\(E[X^2] \cos(\alpha t)
-\sin(\alpha(t+\tau)) = \sigma^2 \cos(\alpha t)
-\sin(\alpha(t+\tau))\)</span> 3. <span class="math inline">\(Y \cdot
-Y\)</span> 项：<span class="math inline">\(E[Y^2] \sin(\alpha t)
-\cos(\alpha(t+\tau)) = \sigma^2 \sin(\alpha t)
-\cos(\alpha(t+\tau))\)</span> 4. <span class="math inline">\(Y \cdot
-X\)</span> 项：均值为 0。</p>
-<p>合并结果： <span class="math display">\[
-R_{XY}(t, t+\tau) = \sigma^2 \Big[ \sin(\alpha(t+\tau))\cos(\alpha t) +
-\cos(\alpha(t+\tau))\sin(\alpha t) \Big]
-\]</span> 利用三角恒等式 <span class="math inline">\(\sin A \cos B +
-\cos A \sin B = \sin(A+B)\)</span>： <span class="math display">\[
-= \sigma^2 \sin(\alpha(t+\tau) + \alpha t) = \sigma^2 \sin(2\alpha t +
-\alpha \tau)
+\begin{aligned}
+P(X_2=1) &amp;= \pi_1 \cdot (\text{P 的第1列}) \\
+&amp;= P(X_1=0)p_{01} + P(X_1=1)p_{11} + P(X_1=2)p_{21} \\
+&amp;= \frac{1}{3} \times \frac{1}{4} + \frac{1}{2} \times \frac{1}{2} +
+\frac{1}{6} \times \frac{3}{4} \\
+&amp;= \frac{1}{12} + \frac{1}{4} + \frac{3}{24} \\
+&amp;= \frac{2}{24} + \frac{6}{24} + \frac{3}{24} \\
+&amp;= \mathbf{\frac{11}{24}}
+\end{aligned}
 \]</span></p>
-<p><strong>分析结果：</strong> 你会发现最终结果包含 <span
-class="math inline">\(t\)</span>（即 <span
-class="math inline">\(\sin(2\alpha t +
-\dots)\)</span>）。根据定义，如果互相关函数依赖于 <span
-class="math inline">\(t\)</span>，它们<strong>不是</strong>联合平稳的。</p>
+<p><strong>答案：</strong> <span class="math inline">\(P\{X_2=1\} =
+\frac{11}{24}\)</span></p>
 <hr />
-<h3 id="题目可能的勘误考试必看">💡 题目可能的勘误（考试必看）</h3>
-<p>这道题在经典的随机过程教材中非常常见，但通常题目里的 <span
-class="math inline">\(Y(t)\)</span>
-会有一个<strong>负号</strong>。请检查你的题目抄写，或者出题老师是否写错了符号。</p>
-<p><strong>情况 A：如果题目必须按原样做</strong>
-结论是：它们<strong>不是</strong>联合平稳过程，因为 <span
-class="math inline">\(R_{XY}\)</span> 与 <span
-class="math inline">\(t\)</span> 有关。</p>
-<p><strong>情况 B：如果题目是 <span class="math inline">\(Y(t) = Y
-\cos(\alpha t) - X \sin(\alpha t)\)</span></strong> （注意 <span
-class="math inline">\(X\)</span> 前面变成了负号） 我们重新计算第三步：
+<h3 id="求-px_n22x_n1">(2) 求 <span
+class="math inline">\(P\{X_{n+2}=2|X_n=1\}\)</span></h3>
+<p>这是求<strong>二步转移概率</strong> <span
+class="math inline">\(p_{12}^{(2)}\)</span>。
+由于是<strong>齐次</strong>马尔可夫链，转移概率只与时间差（步长）有关，与起始时刻
+<span class="math inline">\(n\)</span> 无关。 <span
+class="math inline">\(P\{X_{n+2}=2|X_n=1\} =
+p_{12}^{(2)}\)</span>，即矩阵 <span class="math inline">\(P^2\)</span>
+中第 1 行第 2 列的元素（注意下标从 0 开始，即中间行、最右列）。</p>
+<p><span class="math display">\[
+\begin{aligned}
+p_{12}^{(2)} &amp;= \sum_{k=0}^2 p_{1k} p_{k2} \\
+&amp;= p_{10}p_{02} + p_{11}p_{12} + p_{12}p_{22} \\
+&amp;= (\frac{1}{4} \times 0) + (\frac{1}{2} \times \frac{1}{4}) +
+(\frac{1}{4} \times \frac{1}{4}) \\
+&amp;= 0 + \frac{1}{8} + \frac{1}{16} \\
+&amp;= \frac{2}{16} + \frac{1}{16} \\
+&amp;= \mathbf{\frac{3}{16}}
+\end{aligned}
+\]</span></p>
+<p><strong>答案：</strong> <span
+class="math inline">\(P\{X_{n+2}=2|X_n=1\} = \frac{3}{16}\)</span></p>
+<hr />
+<h3 id="求-px_01-x_12-x_21">(3) 求 <span class="math inline">\(P\{X_0=1,
+X_1=2, X_2=1\}\)</span></h3>
+<p>这是求马尔可夫链特定路径的<strong>联合概率</strong>。
+利用马尔可夫性质（无后效性）和乘法公式： <span
+class="math display">\[P(X_0, X_1, X_2) = P(X_0) \cdot P(X_1|X_0) \cdot
+P(X_2|X_1)\]</span></p>
+<p>代入具体状态 <span class="math inline">\(1 \to 2 \to 1\)</span>：
 <span class="math display">\[
-R_{XY} = \sigma^2 \Big[ \cos(\alpha t)(-\sin(\alpha(t+\tau))) +
-\sin(\alpha t)\cos(\alpha(t+\tau)) \Big]
-\]</span> <span class="math display">\[
-= \sigma^2 \Big[ \sin(\alpha t)\cos(\alpha(t+\tau)) - \cos(\alpha
-t)\sin(\alpha(t+\tau)) \Big]
-\]</span> 利用公式 <span class="math inline">\(\sin A \cos B - \cos A
-\sin B = \sin(A-B)\)</span>： <span class="math display">\[
-= \sigma^2 \sin(\alpha t - \alpha(t+\tau)) = \sigma^2 \sin(-\alpha \tau)
-\]</span> 此时结果<strong>与 <span class="math inline">\(t\)</span>
-无关</strong>。 只有在这种情况下，才能得出“是联合平稳过程”的结论。</p>
-<h2 id="section-3">9</h2>
-<h2 id="section-4">12</h2>
-<h3
-id="第一步准备工作计算统计平均">第一步：准备工作（计算统计平均）</h3>
-<p>在讨论各态历经之前，我们要先确认它是平稳过程，并算出它的“统计平均（Ensemble
-Average）”，作为后续比较的<strong>标准答案</strong>。</p>
-<ol type="1">
-<li><strong>统计均值</strong> <span class="math inline">\(m_X\)</span>：
-<span class="math display">\[E[X(t)] = E[A]\cos(\omega t) +
-E[B]\sin(\omega t) = 0\]</span></li>
-<li><strong>统计自相关函数</strong> <span
-class="math inline">\(R_X(\tau)\)</span>： <span class="math display">\[
 \begin{aligned}
-R_X(t, t+\tau) &amp;= E[X(t)X(t+\tau)] \\
-&amp;= E[(A\cos(\omega t) + B\sin(\omega t))(A\cos(\omega(t+\tau)) +
-B\sin(\omega(t+\tau)))]
+P\{X_0=1, X_1=2, X_2=1\} &amp;= P(X_0=1) \cdot p_{12} \cdot p_{21} \\
+&amp;= \frac{1}{3} \times \frac{1}{4} \times \frac{3}{4} \\
+&amp;= \frac{3}{48} \\
+&amp;= \mathbf{\frac{1}{16}}
 \end{aligned}
-\]</span> 利用 <span
-class="math inline">\(E[A^2]=E[B^2]=\sigma^2\)</span> 和 <span
-class="math inline">\(E[AB]=0\)</span>（独立且均值为0）： <span
-class="math display">\[
-= \sigma^2 [\cos(\omega t)\cos(\omega(t+\tau)) + \sin(\omega
-t)\sin(\omega(t+\tau))]
-\]</span> <span class="math display">\[
-= \sigma^2 \cos(\omega \tau)
-\]</span> <strong>(注：这是我们接下来要对比的“标准答案”)</strong></li>
-</ol>
-<hr />
-<h3 id="第二步讨论均值的各态历经性">第二步：讨论均值的各态历经性</h3>
-<p><strong>定义</strong>：如果一个过程的<strong>时间平均（Time
-Average）</strong>等于<strong>统计平均</strong>，则称其具有均值各态历经性。</p>
-<p>设 <span class="math inline">\(x(t)\)</span> 是 <span
-class="math inline">\(X(t)\)</span> 的任意一个样本函数（即把 <span
-class="math inline">\(A, B\)</span> 看作具体的常数 <span
-class="math inline">\(a, b\)</span>）。 计算时间平均： <span
-class="math display">\[
-\begin{aligned}
-\langle x(t) \rangle &amp;= \lim_{T \to \infty} \frac{1}{2T}
-\int_{-T}^{T} x(t) dt \\
-&amp;= \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^{T} [a\cos(\omega t) +
-b\sin(\omega t)] dt
-\end{aligned}
-\]</span> 由于 <span class="math inline">\(\cos(\omega t)\)</span> 和
-<span class="math inline">\(\sin(\omega t)\)</span>
-都是有界周期函数，在无穷区间上的积分虽然振荡，但除以一个趋于无穷大的
-<span class="math inline">\(2T\)</span>，极限必为
-<strong>0</strong>。</p>
-<p><strong>比较：</strong> <span class="math display">\[
-\text{时间平均 } \langle x(t) \rangle = 0
-\]</span> <span class="math display">\[
-\text{统计平均 } E[X(t)] = 0
-\]</span> 两者相等。
-<strong>结论：该过程具有均值各态历经性。</strong></p>
-<hr />
-<h3
-id="第三步讨论自相关函数的各态历经性">第三步：讨论自相关函数的各态历经性</h3>
-<p><strong>定义</strong>：如果<strong>时间平均自相关函数</strong>等于<strong>统计自相关函数</strong>，则称其具有自相关各态历经性。</p>
-<p>计算样本函数的时间自相关 <span
-class="math inline">\(\mathcal{R}_X(\tau)\)</span>： <span
-class="math display">\[
-\mathcal{R}_X(\tau) = \langle x(t)x(t+\tau) \rangle = \lim_{T \to
-\infty} \frac{1}{2T} \int_{-T}^{T} x(t)x(t+\tau) dt
-\]</span> 先把被积函数展开： <span class="math display">\[
-\begin{aligned}
-x(t)x(t+\tau) &amp;= [a\cos(\omega t) + b\sin(\omega t)] \cdot
-[a\cos(\omega(t+\tau)) + b\sin(\omega(t+\tau))] \\
-&amp;= a^2 \cos(\omega t)\cos(\omega(t+\tau)) + b^2 \sin(\omega
-t)\sin(\omega(t+\tau)) + ab[\dots]
-\end{aligned}
-\]</span> 这里有一个计算技巧：利用积化和差。我们知道时间平均 <span
-class="math inline">\(\langle \cdot \rangle\)</span> 具有以下性质： *
-<span class="math inline">\(\langle \cos(\omega t)\cos(\omega(t+\tau))
-\rangle = \frac{1}{2}\cos(\omega \tau)\)</span> * <span
-class="math inline">\(\langle \sin(\omega t)\sin(\omega(t+\tau)) \rangle
-= \frac{1}{2}\cos(\omega \tau)\)</span> * <span
-class="math inline">\(\langle \text{交叉项} \rangle = \langle
-\sin(2\omega t + \dots) \rangle = 0\)</span></p>
-<p>所以，时间平均自相关函数为： <span class="math display">\[
-\mathcal{R}_X(\tau) = a^2 \cdot \frac{1}{2}\cos(\omega \tau) + b^2 \cdot
-\frac{1}{2}\cos(\omega \tau) = \frac{a^2 + b^2}{2} \cos(\omega \tau)
 \]</span></p>
-<p><strong>关键比较：</strong> * <strong>时间平均</strong>：<span
-class="math inline">\(\mathcal{R}_X(\tau) = \frac{A^2 + B^2}{2}
-\cos(\omega \tau)\)</span> （注意这里 <span class="math inline">\(A,
-B\)</span> 是随机变量） * <strong>统计平均</strong>：<span
-class="math inline">\(R_X(\tau) = \sigma^2 \cos(\omega
-\tau)\)</span></p>
-<p><strong>分析：</strong> 要让它们相等，必须满足 <span
-class="math inline">\(\frac{A^2 + B^2}{2} = \sigma^2\)</span> 恒成立。
-但是，<span class="math inline">\(A\)</span> 和 <span
-class="math inline">\(B\)</span> 是随机变量，它们的平方和 <span
-class="math inline">\(A^2+B^2\)</span>
-<strong>是一个随机变量</strong>，并不恒等于常数 <span
-class="math inline">\(2\sigma^2\)</span>（除非 <span
-class="math inline">\(A, B\)</span> 是常数，但题目说它们是方差为 <span
-class="math inline">\(\sigma^2\)</span> 的随机变量）。</p>
-<p>也就是说，对于不同的样本（即不同的实验结果，<span
-class="math inline">\(A, B\)</span>
-取不同值），算出来的时间平均自相关函数是不一样的，并不收敛这就说明它<strong>不具有</strong>各态历经性。</p>
-<p><strong>结论：该过程不具有自相关函数的各态历经性。</strong></p>
-<h2 id="section-5">13</h2>
-<p>这道题和上一题（第12题）非常像，但有一个<strong>微妙且关键的区别</strong>。</p>
-<p>上一题明确说了 <span class="math inline">\(A, B\)</span>
-是<strong>正态分布</strong>，而这一题只说了是<strong>随机变量</strong>。这给了我们更多的讨论空间，因为“各态历经性”成立与否，取决于
-<span class="math inline">\(A\)</span> 和 <span
-class="math inline">\(B\)</span> 的具体分布性质。</p>
-<p>首先，题目中你漏写了 <span
-class="math inline">\(D(B)\)</span>，但为了使讨论有意义（即让过程成为宽平稳过程），我们必须假设题目隐含了
-<strong><span class="math inline">\(D(B) = D(A) =
-\sigma^2\)</span></strong>。</p>
-<p>以下是详细解答：</p>
+<p><strong>答案：</strong> <span class="math inline">\(P\{X_0=1, X_1=2,
+X_2=1\} = \frac{1}{16}\)</span></p>
+<hr />
+<h3 id="求-px_02x_11x_20">(4) 求 <span
+class="math inline">\(P\{X_{0}=2|X_1=1,X_2=0\}\)</span></h3>
+<h3 id="方法一利用定义硬算-最稳妥的方法">方法一：利用定义“硬算”
+(最稳妥的方法)</h3>
+<p>根据条件概率的定义公式 <span class="math inline">\(P(A|B) =
+\frac{P(AB)}{P(B)}\)</span>：</p>
+<p><span class="math display">\[
+P(X_0=2 | X_1=1, X_2=0) = \frac{P(X_0=2, X_1=1, X_2=0)}{P(X_1=1, X_2=0)}
+\]</span></p>
+<p>我们需要分别算出分子和分母。</p>
+<h4 id="分子特定路径-2-to-1-to-0-的联合概率">1. 分子：特定路径 <span
+class="math inline">\(2 \to 1 \to 0\)</span> 的联合概率</h4>
+<p>这就像我们在上一问做的一样，把路径上的概率乘起来： *
+<strong>初始</strong>：<span class="math inline">\(P(X_0=2) =
+\frac{1}{3}\)</span> * <strong>第一跳 (<span class="math inline">\(2 \to
+1\)</span>)</strong>：<span class="math inline">\(p_{21} =
+\frac{3}{4}\)</span> * <strong>第二跳 (<span class="math inline">\(1 \to
+0\)</span>)</strong>：<span class="math inline">\(p_{10} =
+\frac{1}{4}\)</span></p>
+<p><span class="math display">\[
+\text{分子} = \frac{1}{3} \times \frac{3}{4} \times \frac{1}{4} =
+\frac{3}{48} = \frac{1}{16}
+\]</span></p>
+<h4 id="分母联合事件-x_11-x_20-的概率">2. 分母：联合事件 <span
+class="math inline">\(X_1=1, X_2=0\)</span> 的概率</h4>
+<p>这一步我们可以利用第(1)问算出的结果。 第(1)问中我们算出了时刻 1
+的分布 <span class="math inline">\(\pi_1\)</span>，其中 <span
+class="math inline">\(P(X_1=1) = \frac{1}{2}\)</span>。</p>
+<p>根据乘法公式： <span class="math display">\[
+\begin{aligned}
+P(X_1=1, X_2=0) &amp;= P(X_1=1) \times P(X_2=0 | X_1=1) \\
+&amp;= P(X_1=1) \times p_{10} \\
+&amp;= \frac{1}{2} \times \frac{1}{4} \\
+&amp;= \frac{1}{8}
+\end{aligned}
+\]</span></p>
+<h4 id="相除求结果">3. 相除求结果</h4>
+<p><span class="math display">\[
+\text{结果} = \frac{\text{分子}}{\text{分母}} = \frac{1/16}{1/8} =
+\frac{1}{16} \times 8 = \mathbf{\frac{1}{2}}
+\]</span></p>
 <hr />
 <h3
-id="第一步计算统计特性ensemble-averages">第一步：计算统计特性（Ensemble
-Averages）</h3>
-<p>我们需要先算出“理论值”，作为判断的标准。</p>
+id="方法二利用马尔可夫性质简化-高阶技巧">方法二：利用马尔可夫性质简化
+(高阶技巧)</h3>
+<p>如果你深入理解马尔可夫性，你会发现：<strong><span
+class="math inline">\(X_2=0\)</span> 这个条件其实是多余的。</strong></p>
+<p><strong>为什么？</strong>
+马尔可夫链的特点是“过去”和“未来”通过“现在”被隔断了。 * 链条结构：<span
+class="math inline">\(X_0 \to X_1 \to X_2\)</span> * 一旦 <strong><span
+class="math inline">\(X_1\)</span>（现在）</strong> 已知，那么 <span
+class="math inline">\(X_0\)</span>（过去）和 <span
+class="math inline">\(X_2\)</span>（未来）就是相互独立的。 *
+通俗地说：只要知道你昨天在“北京” (<span
+class="math inline">\(X_1=1\)</span>)，那么你今天飞去了“上海” (<span
+class="math inline">\(X_2=0\)</span>)
+这件事，对于推断你前天是不是在“广州” (<span
+class="math inline">\(X_0=2\)</span>) 没有提供任何额外信息。</p>
+<p><strong>数学推导：</strong> <span class="math display">\[
+P(X_0=2 | X_1=1, X_2=0) = P(X_0=2 | X_1=1)
+\]</span>
+<em>(注：这叫“马尔可夫性的逆向应用”，给定现在，未来不影响对过去的推断)</em></p>
+<p><strong>验证计算 <span class="math inline">\(P(X_0=2 |
+X_1=1)\)</span>：</strong> <span class="math display">\[
+\begin{aligned}
+P(X_0=2 | X_1=1) &amp;= \frac{P(X_0=2, X_1=1)}{P(X_1=1)} \\
+&amp;= \frac{P(X_0=2) \cdot p_{21}}{P(X_1=1)} \\
+&amp;= \frac{\frac{1}{3} \times \frac{3}{4}}{\frac{1}{2}} \\
+&amp;= \frac{\frac{1}{4}}{\frac{1}{2}} \\
+&amp;= \mathbf{\frac{1}{2}}
+\end{aligned}
+\]</span></p>
+<p>结果完全一致！</p>
+<hr />
+<h3 id="讨论此链是否具有遍历性.-若是遍历的求其极限分布.">(5)
+讨论此链是否具有遍历性. 若是遍历的求其极限分布.</h3>
+<p><strong>第一步：讨论遍历性</strong>
+一个有限状态的马尔可夫链具有遍历性（Ergodicity），通常需要满足两个条件：<strong>不可约（Irreducible）</strong>
+和 <strong>非周期（Aperiodic）</strong>。</p>
 <ol type="1">
-<li><p><strong>均值</strong> <span
-class="math inline">\(m_X(t)\)</span>： <span
-class="math display">\[E[X(t)] = E[A]\cos t + E[B]\sin t = 0\]</span>
-（因为 <span class="math inline">\(E[A]=E[B]=0\)</span>）</p></li>
-<li><p><strong>自相关函数</strong> <span class="math inline">\(R_X(t,
-t+\tau)\)</span>： <span class="math display">\[
-R_X(t, t+\tau) = E[(A\cos t + B\sin t)(A\cos(t+\tau) + B\sin(t+\tau))]
-\]</span> 展开后，利用 <span class="math inline">\(A, B\)</span>
-相互独立（<span
-class="math inline">\(E[AB]=0\)</span>）且方差相等（<span
-class="math inline">\(E[A^2]=E[B^2]=\sigma^2\)</span>）： <span
+<li><strong>不可约性</strong>： 观察转移矩阵 <span
+class="math inline">\(P\)</span>：
+<ul>
+<li><span class="math inline">\(0 \to 1\)</span> (<span
+class="math inline">\(p_{01}&gt;0\)</span>), <span
+class="math inline">\(1 \to 0\)</span> (<span
+class="math inline">\(p_{10}&gt;0\)</span>) <span
+class="math inline">\(\Rightarrow\)</span> 0与1互通。</li>
+<li><span class="math inline">\(1 \to 2\)</span> (<span
+class="math inline">\(p_{12}&gt;0\)</span>), <span
+class="math inline">\(2 \to 1\)</span> (<span
+class="math inline">\(p_{21}&gt;0\)</span>) <span
+class="math inline">\(\Rightarrow\)</span> 1与2互通。</li>
+<li>所以所有状态 <span class="math inline">\(\{0, 1, 2\}\)</span>
+都是互通的，该链是不可约的。</li>
+</ul></li>
+<li><strong>非周期性</strong>： 查看对角线元素，<span
+class="math inline">\(p_{00} = 3/4 &gt; 0\)</span>，<span
+class="math inline">\(p_{11} = 1/2 &gt; 0\)</span>。
+只要状态有自环（一步能回到自己），该状态的周期就是
+1。不可约链中所有状态周期相同，故该链是非周期的。</li>
+</ol>
+<p><strong>结论</strong>：该链是有限状态、不可约、非周期的马尔可夫链，因此<strong>具有遍历性</strong>，存在唯一的平稳分布（极限分布）。</p>
+<p><strong>第二步：求极限分布</strong> 设极限分布为 <span
+class="math inline">\(\pi = (\pi_0, \pi_1, \pi_2)\)</span>，则 <span
+class="math inline">\(\pi\)</span> 满足平稳方程 <span
+class="math inline">\(\pi P = \pi\)</span> 且 <span
+class="math inline">\(\sum \pi_i = 1\)</span>。</p>
+<p>列出方程组： <span class="math display">\[
+\begin{cases}
+\frac{3}{4}\pi_0 + \frac{1}{4}\pi_1 + 0\pi_2 = \pi_0 \quad
+&amp;\text{(1)} \\
+\frac{1}{4}\pi_0 + \frac{1}{2}\pi_1 + \frac{3}{4}\pi_2 = \pi_1 \quad
+&amp;\text{(2)} \\
+0\pi_0 + \frac{1}{4}\pi_1 + \frac{1}{4}\pi_2 = \pi_2 \quad
+&amp;\text{(3)} \\
+\pi_0 + \pi_1 + \pi_2 = 1 \quad &amp;\text{(4)}
+\end{cases}
+\]</span></p>
+<p>解方程： 由 (1) 得：<span class="math inline">\(\frac{1}{4}\pi_1 =
+\frac{1}{4}\pi_0 \Rightarrow \mathbf{\pi_0 = \pi_1}\)</span> 由 (3)
+得：<span class="math inline">\(\frac{1}{4}\pi_1 = \frac{3}{4}\pi_2
+\Rightarrow \mathbf{\pi_1 = 3\pi_2}\)</span></p>
+<p>综上关系：<span class="math inline">\(\pi_0 = 3\pi_2, \quad \pi_1 =
+3\pi_2\)</span>。</p>
+<p>代入归一化条件 (4)： <span class="math display">\[3\pi_2 + 3\pi_2 +
+\pi_2 = 1\]</span> <span class="math display">\[7\pi_2 = 1 \Rightarrow
+\mathbf{\pi_2 = \frac{1}{7}}\]</span></p>
+<p>回代求得： <span class="math inline">\(\pi_1 = \frac{3}{7}\)</span>
+<span class="math inline">\(\pi_0 = \frac{3}{7}\)</span></p>
+<p><strong>答案：</strong> 该链具有遍历性。其极限分布为 <span
+class="math inline">\(\pi = (\frac{3}{7}, \frac{3}{7},
+\frac{1}{7})\)</span>。</p>
+<hr />
+<h2 id="section">1</h2>
+<p>判定一个随机过程 <span class="math inline">\(\{X_n\}\)</span>
+是否是马尔可夫链（马氏链），核心标准是看它是否具有<strong>“无后效性”</strong>。</p>
+<p>即：推断<strong>“未来”</strong>（<span
+class="math inline">\(X_{n+1}\)</span>）的概率分布，在已知<strong>“现在”</strong>（<span
+class="math inline">\(X_n\)</span>）的情况下，是否还需要参考<strong>“过去”</strong>（<span
+class="math inline">\(X_{n-1}, \cdots, X_1\)</span>）的信息？ *
+如果<strong>只需要“现在”</strong>就能完全决定“未来”的分布，则是马氏链。
+* 如果<strong>还需要“过去”</strong>来辅助判断，则不是。</p>
+<p>我们利用递推关系式法来分别讨论。</p>
+<hr />
+<h3 id="x_n-u_1-u_2-cdots-u_n">(1) <span class="math inline">\(X_n = U_1
++ U_2 + \cdots + U_n\)</span></h3>
+<p><strong>结论：是马尔可夫链。</strong></p>
+<p><strong>证明过程：</strong></p>
+<ol type="1">
+<li><p><strong>寻找递推关系</strong>： 我们可以将 <span
+class="math inline">\(X_{n+1}\)</span> 写成 <span
+class="math inline">\(X_n\)</span> 的函数： <span
 class="math display">\[
-= \sigma^2 \cos t \cos(t+\tau) + \sigma^2 \sin t \sin(t+\tau)
-\]</span> 利用三角恒等式： <span class="math display">\[
-R_X(\tau) = \sigma^2 \cos \tau
+\begin{aligned}
+X_{n+1} &amp;= \underbrace{U_1 + U_2 + \cdots + U_n}_{X_n} + U_{n+1} \\
+X_{n+1} &amp;= X_n + U_{n+1}
+\end{aligned}
 \]</span></p></li>
+<li><p><strong>分析依赖性</strong>：</p></li>
 </ol>
-<p><strong>结论</strong>：这是一个宽平稳过程。我们接下来的任务是验证时间平均是否等于上面的
-<span class="math inline">\(0\)</span> 和 <span
-class="math inline">\(\sigma^2 \cos \tau\)</span>。</p>
+<ul>
+<li><span class="math inline">\(X_{n+1}\)</span> 的值取决于当前状态
+<span class="math inline">\(X_n\)</span> 和新的增量 <span
+class="math inline">\(U_{n+1}\)</span>。</li>
+<li>题目已知 <span class="math inline">\(\{U_n\}\)</span>
+是<strong>相互独立</strong>的随机变量序列。</li>
+<li>这意味着，新的增量 <span class="math inline">\(U_{n+1}\)</span>
+独立于过去的所有的 <span class="math inline">\(U_1, \dots,
+U_n\)</span>。</li>
+<li>因为过去的某些状态 <span class="math inline">\(X_{n-1}, \dots,
+X_1\)</span> 只是 <span class="math inline">\(U_1, \dots,
+U_{n-1}\)</span> 的组合，所以 <span
+class="math inline">\(U_{n+1}\)</span> 也独立于过去的所有状态 <span
+class="math inline">\((X_1, \dots, X_n)\)</span>。</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>结论</strong>： 当我们已知“现在”的状态 <span
+class="math inline">\(X_n = x_n\)</span> 时，“未来” <span
+class="math inline">\(X_{n+1} = x_n + U_{n+1}\)</span> 的分布完全由
+<span class="math inline">\(U_{n+1}\)</span>
+的分布决定，与“过去”的历史路径无关。 满足马尔可夫性： <span
+class="math display">\[P(X_{n+1} | X_n, X_{n-1}, \dots, X_1) = P(X_{n+1}
+| X_n)\]</span></li>
+</ol>
+<p>这就是典型的<strong>随机游走（Random
+Walk）</strong>模型，它是最经典的马尔可夫链之一。</p>
 <hr />
-<h3 id="第二步讨论均值的各态历经性-1">第二步：讨论均值的各态历经性</h3>
-<p>计算样本函数 <span class="math inline">\(x(t) = a\cos t + b\sin
-t\)</span> 的时间平均：</p>
-<p><span class="math display">\[
-\langle x(t) \rangle = \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^{T}
-(a\cos t + b\sin t) dt
-\]</span></p>
-<p>由于 <span class="math inline">\(\cos t\)</span> 和 <span
-class="math inline">\(\sin t\)</span> 在无穷区间上的平均值为 0： <span
-class="math display">\[
-\langle x(t) \rangle = 0
-\]</span></p>
-<p><strong>对比</strong>： * 时间平均 <span class="math inline">\(=
-0\)</span> * 统计均值 <span class="math inline">\(= 0\)</span></p>
-<p><strong>结论：</strong> 无论 <span class="math inline">\(A,
-B\)</span>
-服从什么分布，该过程<strong>具有均值的各态历经性</strong>。</p>
-<hr />
-<h3
-id="第三步讨论自相关函数的各态历经性-1">第三步：讨论自相关函数的各态历经性</h3>
-<p>计算样本函数的时间自相关 <span
-class="math inline">\(\mathcal{R}_X(\tau)\)</span>：</p>
-<p><span class="math display">\[
-\mathcal{R}_X(\tau) = \langle x(t)x(t+\tau) \rangle
-\]</span></p>
-<p>展开被积函数（和上一题一样的技巧，利用积化和差）： <span
-class="math display">\[
+<h3 id="x_n-u_1-u_2-cdots-u_n2">(2) <span class="math inline">\(X_n =
+(U_1 + U_2 + \cdots + U_n)^2\)</span></h3>
+<p><strong>结论：一般情况下不是马尔可夫链。</strong>
+<em>(只有在特殊情况下，如 <span class="math inline">\(U_n\)</span>
+的分布关于 0 对称时，才可能是)</em></p>
+<p><strong>分析与反例：</strong></p>
+<ol type="1">
+<li><p><strong>寻找递推关系</strong>： 令 <span
+class="math inline">\(S_n = U_1 + \cdots +
+U_n\)</span>（即第一问中的随机游走），则 <span class="math inline">\(X_n
+= S_n^2\)</span>。 <span class="math display">\[
 \begin{aligned}
-x(t)x(t+\tau) &amp;= [a\cos t + b\sin t][a\cos(t+\tau) + b\sin(t+\tau)]
+X_{n+1} &amp;= S_{n+1}^2 = (S_n + U_{n+1})^2 \\
+X_{n+1} &amp;= S_n^2 + 2S_n U_{n+1} + U_{n+1}^2 \\
+X_{n+1} &amp;= X_n + 2S_n U_{n+1} + U_{n+1}^2
+\end{aligned}
+\]</span></p></li>
+<li><p><strong>发现问题</strong>： 要确定 <span
+class="math inline">\(X_{n+1}\)</span> 的分布，我们需要知道 <span
+class="math inline">\(X_n\)</span> 和 <strong><span
+class="math inline">\(S_n\)</span> 的正负号</strong>。</p></li>
+</ol>
+<ul>
+<li>已知 <span class="math inline">\(X_n\)</span> (即 <span
+class="math inline">\(S_n^2\)</span>)，我们只能算出 <span
+class="math inline">\(|S_n|\)</span> 的绝对值，但<strong>不知道 <span
+class="math inline">\(S_n\)</span> 到底是正还是负</strong>。</li>
+<li>然而，中间项 <span class="math inline">\(2S_n U_{n+1}\)</span>
+的值显然取决于 <span class="math inline">\(S_n\)</span> 的符号。</li>
+<li>这时候，“过去”的信息（<span
+class="math inline">\(X_{n-1}\)</span>）可能会帮助我们推断出 <span
+class="math inline">\(S_n\)</span> 的符号，从而改变对未来的预测。</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>举反例证明（非马氏性）</strong>： 设 <span
+class="math inline">\(U_n\)</span> 取值非对称，例如：<span
+class="math inline">\(P(U_n = 1) = \frac{2}{3}, P(U_n = -1) =
+\frac{1}{3}\)</span>。</li>
+</ol>
+<p>假设当前状态 <strong><span class="math inline">\(X_n =
+1\)</span></strong>。这意味着 <span class="math inline">\(S_n\)</span>
+可能是 <span class="math inline">\(1\)</span> 或 <span
+class="math inline">\(-1\)</span>。 我们需要预测下一时刻 <strong><span
+class="math inline">\(X_{n+1} = 0\)</span></strong> 的概率。 注：<span
+class="math inline">\(X_{n+1}=0\)</span> 意味着 <span
+class="math inline">\((S_n + U_{n+1})^2 = 0\)</span>，即 <span
+class="math inline">\(U_{n+1} = -S_n\)</span>。</p>
+<ul>
+<li><p><strong>情况 A：如果历史告诉我们 <span class="math inline">\(S_n
+= 1\)</span></strong> （例如通过 <span
+class="math inline">\(X_{n-1}\)</span> 推断出来的）。 要跳到 0，需要
+<span class="math inline">\(U_{n+1} = -1\)</span>。 概率为：<span
+class="math inline">\(P(U_{n+1}=-1) =
+\mathbf{\frac{1}{3}}\)</span>。</p></li>
+<li><p><strong>情况 B：如果历史告诉我们 <span class="math inline">\(S_n
+= -1\)</span></strong>。 要跳到 0，需要 <span
+class="math inline">\(U_{n+1} = 1\)</span>。 概率为：<span
+class="math inline">\(P(U_{n+1}=1) =
+\mathbf{\frac{2}{3}}\)</span>。</p></li>
+</ul>
+<p><strong>显而易见</strong>： 虽然“现在”的状态都是 <span
+class="math inline">\(X_n=1\)</span>，但如果你知道“过去”的信息导致判定
+<span class="math inline">\(S_n\)</span>
+符号不同，预测“未来”的概率（<span class="math inline">\(1/3\)</span> vs
+<span class="math inline">\(2/3\)</span>）就不同了。</p>
+<p><span class="math display">\[P(X_{n+1}|X_n, X_{n-1}) \neq
+P(X_{n+1}|X_n)\]</span></p>
+<p>所以，一般情况下它<strong>不是</strong>马尔可夫链。</p>
+<p><strong>补充说明（特殊情况）：</strong> 如果 <span
+class="math inline">\(U_n\)</span> 的分布是<strong>关于 0
+对称</strong>的（例如取 <span class="math inline">\(\pm 1\)</span>
+的概率都是 <span class="math inline">\(0.5\)</span>），那么 <span
+class="math inline">\(S_n\)</span> 为正或为负时，下一步 <span
+class="math inline">\(X_{n+1}\)</span>
+的分布是一样的（因为对称性消除了符号的影响）。在这种特殊情况下，它会变成马氏链。但题目问的是一般情况，答案应为<strong>否</strong>。</p>
+<hr />
+<h2 id="section-1">2</h2>
+<p>要证明随机差分方程 <span class="math inline">\(X_n = \rho X_{n-1} +
+I_n\)</span> 定义的序列 <span class="math inline">\(\{X_n\}\)</span>
+是马尔可夫链（马氏链），我们需要验证其是否满足<strong>马尔可夫性（无后效性）</strong>。</p>
+<p>即证明： <span class="math display">\[P(X_{n+1} = x_{n+1} | X_n =
+x_n, X_{n-1} = x_{n-1}, \cdots, X_0 = x_0) = P(X_{n+1} = x_{n+1} | X_n =
+x_n)\]</span></p>
+<p>通俗地说，我们要证明：<strong>在已知“现在”(<span
+class="math inline">\(X_n\)</span>)的情况下，“未来”(<span
+class="math inline">\(X_{n+1}\)</span>)只与“现在”有关，而与“过去”(<span
+class="math inline">\(X_{n-1}, \dots\)</span>)无关。</strong></p>
+<hr />
+<h3 id="证明过程">证明过程</h3>
+<p><strong>第一步：分析 <span class="math inline">\(X_{n+1}\)</span>
+的构成</strong></p>
+<p>根据给定的递推公式，将 <span class="math inline">\(n\)</span> 换成
+<span class="math inline">\(n+1\)</span>，我们有： <span
+class="math display">\[X_{n+1} = \rho X_n + I_{n+1}\]</span></p>
+<p><strong>第二步：分析独立性</strong></p>
+<ul>
+<li><span class="math inline">\(X_k\)</span> (其中 <span
+class="math inline">\(k \le n\)</span>) 是由之前的噪声项 <span
+class="math inline">\(I_1, I_2, \cdots, I_k\)</span>
+线性组合而成的（因为 <span class="math inline">\(X_0=0\)</span>）。</li>
+<li>题目已知 <span class="math inline">\(\{I_n\}\)</span>
+是独立同分布的序列。</li>
+<li>因此，<strong><span class="math inline">\(I_{n+1}\)</span> 独立于
+<span class="math inline">\(I_1, I_2, \cdots,
+I_n\)</span></strong>，也就意味着 <strong><span
+class="math inline">\(I_{n+1}\)</span> 独立于 <span
+class="math inline">\(X_n, X_{n-1}, \cdots, X_0\)</span></strong>。</li>
+</ul>
+<p><strong>第三步：推导条件概率</strong></p>
+<p>我们需要计算在已知所有历史信息的条件下，<span
+class="math inline">\(X_{n+1}\)</span> 取特定值的概率：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; P(X_{n+1} = x_{n+1} | X_n = x_n, X_{n-1} = x_{n-1}, \cdots, X_0 =
+x_0) \\
+&amp; \quad \text{// 代入递推公式 } X_{n+1} = \rho X_n + I_{n+1} \\
+=\ &amp; P(\rho X_n + I_{n+1} = x_{n+1} | X_n = x_n, X_{n-1} = x_{n-1},
+\cdots, X_0 = x_0) \\
+&amp; \quad \text{// 在条件已知的情况下，} X_n \text{ 可以看作常数 } x_n
 \\
-\text{时间平均} &amp;= a^2 \langle \cos t \cos(t+\tau) \rangle + b^2
-\langle \sin t \sin(t+\tau) \rangle + ab \langle \dots \rangle
+=\ &amp; P(\rho x_n + I_{n+1} = x_{n+1} | X_n = x_n, X_{n-1} = x_{n-1},
+\cdots, X_0 = x_0) \\
+&amp; \quad \text{// 移项，将随机变量 } I_{n+1} \text{ 留在左边} \\
+=\ &amp; P(I_{n+1} = x_{n+1} - \rho x_n | X_n = x_n, X_{n-1} = x_{n-1},
+\cdots, X_0 = x_0) \\
+&amp; \quad \text{// 利用独立性：} I_{n+1} \text{ 与过去的 } X \text{
+无关，条件可以去掉} \\
+=\ &amp; P(I_{n+1} = x_{n+1} - \rho x_n)
 \end{aligned}
 \]</span></p>
-<p>利用时间平均性质： * <span class="math inline">\(\langle \cos t
-\cos(t+\tau) \rangle = \frac{1}{2}\cos \tau\)</span> * <span
-class="math inline">\(\langle \sin t \sin(t+\tau) \rangle =
-\frac{1}{2}\cos \tau\)</span> * 交叉项平均为 0</p>
-<p>得到<strong>时间自相关函数</strong>： <span class="math display">\[
-\mathcal{R}_X(\tau) = \frac{A^2 + B^2}{2} \cos \tau
-\]</span> <em>(注意：这里 <span class="math inline">\(A, B\)</span>
-对应具体的样本观测值)</em></p>
-<p><strong>对比统计自相关函数</strong>： <span class="math display">\[
-R_X(\tau) = \sigma^2 \cos \tau
-\]</span></p>
-<p><strong>核心讨论：</strong> 要使过程具有各态历经性，必须满足： <span
-class="math display">\[
-\mathcal{R}_X(\tau) = R_X(\tau) \quad \text{(以概率 1 成立)}
-\]</span> 即要求： <span class="math display">\[
-\frac{A^2 + B^2}{2} = \sigma^2 \implies A^2 + B^2 = 2\sigma^2
-\]</span></p>
-<p>这里就是第12题和第13题的区别所在：</p>
-<ol type="1">
-<li><strong>一般情况（大部分随机变量）</strong>： 如果 <span
-class="math inline">\(A, B\)</span>
-是像正态分布、均匀分布这样的连续随机变量，那么 <span
-class="math inline">\(A^2 + B^2\)</span>
-是一个<strong>随机变量</strong>（会波动的），它不可能恒等于常数 <span
-class="math inline">\(2\sigma^2\)</span>。</li>
-</ol>
-<ul>
-<li><strong>结论</strong>：在一般情况下，<strong>不具有</strong>自相关函数的各态历经性。</li>
-</ul>
-<ol start="2" type="1">
-<li><strong>特殊情况（离散分布）</strong>： 如果 <span
-class="math inline">\(A\)</span> 和 <span
-class="math inline">\(B\)</span> 是离散随机变量，且只取值 <span
-class="math inline">\(+\sigma\)</span> 或 <span
-class="math inline">\(-\sigma\)</span>（概率各为0.5）。</li>
-</ol>
-<ul>
-<li>此时 <span class="math inline">\(A^2 \equiv \sigma^2\)</span>，
-<span class="math inline">\(B^2 \equiv \sigma^2\)</span>。</li>
-<li>那么 <span class="math inline">\(A^2 + B^2 = 2\sigma^2\)</span>
-<strong>恒成立</strong>。</li>
-<li><strong>结论</strong>：在这种特殊的“二值分布”下，它<strong>具有</strong>自相关函数的各态历经性。</li>
-</ul>
-<hr />
-<h3 id="考试应该怎么写">考试应该怎么写？</h3>
-<p>既然题目只说了“随机变量”而没指定分布，最严谨的答案是<strong>分类讨论</strong>或<strong>指出条件</strong>：</p>
-<p><strong>答：</strong> 1. <strong>均值各态历经性</strong>： 时间平均
-<span class="math inline">\(\langle x(t) \rangle = 0\)</span>，统计平均
-<span class="math inline">\(E[X(t)] =
-0\)</span>，两者相等，故<strong>具有均值各态历经性</strong>。</p>
-<ol start="2" type="1">
-<li><strong>自相关各态历经性</strong>： 统计自相关为 <span
-class="math inline">\(R_X(\tau) = \sigma^2 \cos \tau\)</span>。
-时间自相关为 <span class="math inline">\(\mathcal{R}_X(\tau) =
-\frac{A^2+B^2}{2} \cos \tau\)</span>。</li>
-</ol>
-<ul>
-<li>若随机变量 <span class="math inline">\(A, B\)</span> 满足 <span
-class="math inline">\(A^2 + B^2 = 2\sigma^2\)</span> (例如 <span
-class="math inline">\(P(A=\pm
-\sigma)=0.5\)</span>)，则具有各态历经性。</li>
-<li>若 <span class="math inline">\(A, B\)</span>
-为一般随机变量（如正态分布），<span
-class="math inline">\(A^2+B^2\)</span> 不恒等于 <span
-class="math inline">\(2\sigma^2\)</span>，则<strong>不具有</strong>自相关各态历经性。</li>
-</ul>
-<h2 id="section-6">14</h2>
-<h3 id="第一步计算统计平均理论值">第一步：计算统计平均（理论值）</h3>
-<p>我们需要先算出“上帝视角”下的统计均值和自相关函数。</p>
-<h4 id="统计均值-m_xt">1. 统计均值 <span
-class="math inline">\(m_X(t)\)</span></h4>
+<p><strong>第四步：验证只依赖于当前状态</strong></p>
+<p>现在我们需要看看，如果只给定当前状态 <span
+class="math inline">\(X_n\)</span>，概率是多少：</p>
 <p><span class="math display">\[
-E[X(t)] = E[A \cos(\omega t + \Theta)]
-\]</span> 由于 <span class="math inline">\(A\)</span> 和 <span
-class="math inline">\(\Theta\)</span> 相互独立，期望可以拆开： <span
-class="math display">\[
-= E[A] \cdot E[\cos(\omega t + \Theta)]
-\]</span> 重点看后一项，已知 <span class="math inline">\(\Theta \sim
-U[0, 2\pi]\)</span>，其概率密度为 <span
-class="math inline">\(\frac{1}{2\pi}\)</span>： <span
-class="math display">\[
-E[\cos(\omega t + \Theta)] = \int_{0}^{2\pi} \cos(\omega t + \theta)
-\frac{1}{2\pi} d\theta = 0
-\]</span> （在一个完整周期内积分余弦函数，结果必为 0）
-<strong>所以：</strong> <span class="math display">\[
-m_X = 0
-\]</span></p>
-<h4 id="统计自相关函数-r_xtau">2. 统计自相关函数 <span
-class="math inline">\(R_X(\tau)\)</span></h4>
-<p><span class="math display">\[
-R_X(t, t+\tau) = E[X(t)X(t+\tau)]
-\]</span> <span class="math display">\[
-= E[A^2 \cos(\omega t + \Theta) \cos(\omega (t+\tau) + \Theta)]
-\]</span> 利用独立性，<span class="math inline">\(E[A^2]\)</span>
-和角度部分的期望分开算。 利用积化和差公式 <span
-class="math inline">\(\cos \alpha \cos \beta =
-\frac{1}{2}[\cos(\alpha-\beta) + \cos(\alpha+\beta)]\)</span>： <span
-class="math display">\[
-= E[A^2] \cdot E\left[ \frac{1}{2} \cos(\omega \tau) + \frac{1}{2}
-\cos(2\omega t + \omega \tau + 2\Theta) \right]
-\]</span> * 第一项 <span class="math inline">\(\frac{1}{2} \cos(\omega
-\tau)\)</span> 是常数（相对于期望而言）。 * 第二项含有 <span
-class="math inline">\(2\Theta\)</span>，在 <span
-class="math inline">\([0, 2\pi]\)</span> 上积分依然为 0。</p>
-<p>所以： <span class="math display">\[
-R_X(\tau) = \frac{1}{2} E[A^2] \cos(\omega \tau)
-\]</span></p>
-<p><strong>关键点：计算 <span
-class="math inline">\(E[A^2]\)</span></strong> 题目给出了 <span
-class="math inline">\(A\)</span> 的概率密度是瑞利分布：<span
-class="math inline">\(f(x) = \frac{x}{\sigma^2}
-e^{-\frac{x^2}{2\sigma^2}}\)</span>。
-我们可以直接利用瑞利分布的性质，或者积分计算二阶矩： <span
-class="math display">\[
-E[A^2] = \int_{0}^{\infty} x^2 \cdot \frac{x}{\sigma^2}
-e^{-\frac{x^2}{2\sigma^2}} dx
-\]</span> 令 <span class="math inline">\(u =
-\frac{x^2}{2\sigma^2}\)</span>，则 <span class="math inline">\(x^2 =
-2\sigma^2 u\)</span>，且 <span class="math inline">\(dx =
-\frac{\sigma^2}{x} du\)</span>。 代换后这个积分结果为 <strong><span
-class="math inline">\(2\sigma^2\)</span></strong>。（这是瑞利分布的一个重要特征：能量
-<span class="math inline">\(E[A^2] = 2\sigma^2\)</span>）。</p>
-<p>代回原式： <span class="math display">\[
-R_X(\tau) = \frac{1}{2} (2\sigma^2) \cos(\omega \tau) = \sigma^2
-\cos(\omega \tau)
-\]</span></p>
-<hr />
-<h3 id="第二步计算时间平均观测值">第二步：计算时间平均（观测值）</h3>
-<h4 id="时间均值-langle-xt-rangle">1. 时间均值 <span
-class="math inline">\(\langle x(t) \rangle\)</span></h4>
-<p>对于任意样本 <span class="math inline">\(x(t) = a \cos(\omega t +
-\theta)\)</span>： <span class="math display">\[
-\langle x(t) \rangle = \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^{T} a
-\cos(\omega t + \theta) dt = 0
-\]</span> （余弦波的直流分量为 0）</p>
-<h4 id="时间自相关函数-mathcalr_xtau">2. 时间自相关函数 <span
-class="math inline">\(\mathcal{R}_X(\tau)\)</span></h4>
-<p><span class="math display">\[
-\mathcal{R}_X(\tau) = \langle x(t)x(t+\tau) \rangle
-\]</span> 利用积化和差及时间平均的性质（高频分量平均为0）： <span
-class="math display">\[
 \begin{aligned}
-\langle a \cos(\omega t + \theta) \cdot a \cos(\omega t + \omega \tau +
-\theta) \rangle &amp;= \frac{a^2}{2} \langle \cos(\omega \tau) +
-\cos(2\omega t + \dots) \rangle \\
-&amp;= \frac{a^2}{2} \cos(\omega \tau)
+&amp; P(X_{n+1} = x_{n+1} | X_n = x_n) \\
+=\ &amp; P(\rho X_n + I_{n+1} = x_{n+1} | X_n = x_n) \\
+=\ &amp; P(\rho x_n + I_{n+1} = x_{n+1} | X_n = x_n) \\
+=\ &amp; P(I_{n+1} = x_{n+1} - \rho x_n | X_n = x_n) \\
+&amp; \quad \text{// 同样利用独立性，} I_{n+1} \text{ 与 } X_n \text{
+独立} \\
+=\ &amp; P(I_{n+1} = x_{n+1} - \rho x_n)
 \end{aligned}
-\]</span> 写成随机变量形式： <span class="math display">\[
-\mathcal{R}_X(\tau) = \frac{A^2}{2} \cos(\omega \tau)
 \]</span></p>
-<hr />
-<h3 id="第三步讨论各态历经性对比">第三步：讨论各态历经性（对比）</h3>
-<h4 id="均值各态历经性">1. 均值各态历经性</h4>
-<ul>
-<li>统计平均 <span class="math inline">\(m_X = 0\)</span></li>
-<li>时间平均 <span class="math inline">\(\langle x(t) \rangle =
-0\)</span></li>
-<li><strong>结论：</strong>
-两者相等，<strong>具有</strong>均值各态历经性。</li>
-</ul>
-<h4 id="自相关各态历经性">2. 自相关各态历经性</h4>
-<ul>
-<li>统计自相关 <span class="math inline">\(R_X(\tau) = \sigma^2
-\cos(\omega \tau)\)</span></li>
-<li>时间自相关 <span class="math inline">\(\mathcal{R}_X(\tau) =
-\frac{A^2}{2} \cos(\omega \tau)\)</span></li>
-</ul>
-<p><strong>分析：</strong> 要让两者相等，必须要求随机变量 <span
-class="math inline">\(A\)</span> 满足： <span class="math display">\[
-\frac{A^2}{2} = \sigma^2 \implies A^2 = 2\sigma^2 \implies A =
-\sqrt{2}\sigma \quad (\text{常数})
-\]</span> 但是，题目明确指出 <strong><span
-class="math inline">\(A\)</span> 服从瑞利分布</strong>。这意味着 <span
-class="math inline">\(A\)</span>
-是一个会在不同样本间变化的随机变量，它不可能恒等于常数 <span
-class="math inline">\(\sqrt{2}\sigma\)</span>。 因此，时间平均 <span
-class="math inline">\(\neq\)</span> 统计平均。</p>
-<ul>
-<li><strong>结论：</strong>
-该过程<strong>不具有</strong>自相关函数的各态历经性。</li>
-</ul>
-<hr />
-<h3 id="总结与直观理解">💡 总结与直观理解</h3>
-<p>考试时，只要算出 <span class="math inline">\(R_X = \sigma^2
-\cos(\omega \tau)\)</span> 和 <span class="math inline">\(\mathcal{R}_X
-= \frac{A^2}{2} \cos(\omega \tau)\)</span>，然后指出 <strong>“因为 <span
-class="math inline">\(A\)</span> 是瑞利分布变量，<span
-class="math inline">\(\frac{A^2}{2} \neq
-\sigma^2\)</span>”</strong>，这道题就拿满分了。</p>
-<h2 id="section-7">18</h2>
-<p><strong>解题思路：</strong>
-对于线性时不变系统（LTI），如果输入是平稳过程，我们通常采用<strong>频域法（功率谱密度法）</strong>来求解输出的自相关函数，因为在频域进行乘法运算比在时域进行卷积运算（特别是双重卷积）要简单得多。</p>
-<p>以下是详细步骤：</p>
-<hr />
-<h3 id="第一步确定系统的性质">第一步：确定系统的性质</h3>
-<p>首先，我们需要求出系统的频率响应函数 <span
-class="math inline">\(H(\omega)\)</span>。 对微分方程 <span
-class="math inline">\(Y&#39;(t) + \alpha Y(t) = \alpha X(t)\)</span>
-两边同时做傅里叶变换：</p>
-<p><span class="math display">\[
-j\omega Y(\omega) + \alpha Y(\omega) = \alpha X(\omega)
-\]</span></p>
-<p>整理得到传输函数： <span class="math display">\[
-H(\omega) = \frac{Y(\omega)}{X(\omega)} = \frac{\alpha}{\alpha +
-j\omega}
-\]</span></p>
-<p>这就对应模的平方（功率传输系数）： <span class="math display">\[
-|H(\omega)|^2 = H(\omega)H^*(\omega) = \frac{\alpha}{\alpha + j\omega}
-\cdot \frac{\alpha}{\alpha - j\omega} = \frac{\alpha^2}{\alpha^2 +
-\omega^2}
-\]</span></p>
-<hr />
-<h3 id="第二步求输出的均值函数-m_y">第二步：求输出的均值函数 <span
-class="math inline">\(m_Y\)</span></h3>
-<p>对于线性系统，输出的均值等于输入的均值乘以系统的直流增益 <span
-class="math inline">\(H(0)\)</span>。</p>
-<ol type="1">
-<li><strong>系统直流增益</strong>：令 <span class="math inline">\(\omega
-= 0\)</span>，则 <span class="math inline">\(H(0) = \frac{\alpha}{\alpha
-+ 0} = 1\)</span>。</li>
-<li><strong>输入均值</strong>：已知 <span class="math inline">\(m_X =
-0\)</span>。</li>
-</ol>
-<p>因此，输出均值为： <span class="math display">\[
-m_Y = m_X \cdot H(0) = 0 \cdot 1 = 0
-\]</span></p>
-<p><strong>结论：</strong> 输出均值函数 <span
-class="math inline">\(m_Y(t) = 0\)</span>。</p>
-<hr />
-<h3 id="第三步求输出的相关函数-r_ytau">第三步：求输出的相关函数 <span
-class="math inline">\(R_Y(\tau)\)</span></h3>
-<p>我们利用功率谱密度（PSD）来求解。根据维纳-辛钦定理（Wiener-Khinchin
-Theorem），相关函数和功率谱密度是一对傅里叶变换对。</p>
-<p><strong>1. 求输入的功率谱密度 <span
-class="math inline">\(S_X(\omega)\)</span></strong> 已知 <span
-class="math inline">\(R_X(\tau) = \sigma^2 e^{-\beta
-|\tau|}\)</span>，利用常用傅里叶变换对 <span
-class="math inline">\(e^{-a|t|} \leftrightarrow
-\frac{2a}{a^2+\omega^2}\)</span>：</p>
-<p><span class="math display">\[
-S_X(\omega) = \mathcal{F}\{ R_X(\tau) \} = \sigma^2
-\frac{2\beta}{\beta^2 + \omega^2}
-\]</span></p>
-<p><strong>2. 求输出的功率谱密度 <span
-class="math inline">\(S_Y(\omega)\)</span></strong> 根据公式 <span
-class="math inline">\(S_Y(\omega) = |H(\omega)|^2
-S_X(\omega)\)</span>：</p>
-<p><span class="math display">\[
-S_Y(\omega) = \frac{\alpha^2}{\alpha^2 + \omega^2} \cdot \frac{2\sigma^2
-\beta}{\beta^2 + \omega^2}
-\]</span> 整理得： <span class="math display">\[
-S_Y(\omega) = 2\sigma^2 \alpha^2 \beta \cdot \frac{1}{(\omega^2 +
-\alpha^2)(\omega^2 + \beta^2)}
-\]</span></p>
-<p><strong>3. 进行部分分式展开（Partial Fraction
-Decomposition）</strong> 为了方便做傅里叶逆变换，我们需要把分母拆开。 设
-<span class="math inline">\(\frac{1}{(\omega^2 + \alpha^2)(\omega^2 +
-\beta^2)} = \frac{A}{\omega^2 + \alpha^2} + \frac{B}{\omega^2 +
-\beta^2}\)</span>。</p>
-<p>通分后分子为 <span class="math inline">\(A(\omega^2 + \beta^2) +
-B(\omega^2 + \alpha^2) = 1\)</span>。 * 令 <span
-class="math inline">\(\omega^2 = -\alpha^2 \implies A(\beta^2 -
-\alpha^2) = 1 \implies A = \frac{1}{\beta^2 - \alpha^2}\)</span> * 令
-<span class="math inline">\(\omega^2 = -\beta^2 \implies B(-\beta^2 +
-\alpha^2) = 1 \implies B = \frac{-1}{\beta^2 - \alpha^2}\)</span></p>
-<p>代回 <span class="math inline">\(S_Y(\omega)\)</span> 表达式： <span
+<p><strong>结论</strong></p>
+<p>对比第三步和第四步的结果，我们发现两者完全相等： <span
 class="math display">\[
-S_Y(\omega) = \frac{2\sigma^2 \alpha^2 \beta}{\beta^2 - \alpha^2} \left(
-\frac{1}{\omega^2 + \alpha^2} - \frac{1}{\omega^2 + \beta^2} \right)
+P(X_{n+1} | X_n, \cdots, X_0) = P(I_{n+1} = x_{n+1} - \rho x_n) =
+P(X_{n+1} | X_n)
 \]</span></p>
-<p><strong>4. 求傅里叶逆变换得到 <span
-class="math inline">\(R_Y(\tau)\)</span></strong>
-我们需要将式子凑成标准形式 <span
-class="math inline">\(\frac{2a}{a^2+\omega^2}\)</span>
-以便直接逆变换。</p>
-<p><span class="math display">\[
-S_Y(\omega) = \frac{\sigma^2 \alpha^2 \beta}{\beta^2 - \alpha^2} \left(
-\frac{1}{\alpha} \cdot \frac{2\alpha}{\omega^2 + \alpha^2} -
-\frac{1}{\beta} \cdot \frac{2\beta}{\omega^2 + \beta^2} \right)
-\]</span></p>
-<p>现在分别对两项进行逆变换： * <span
-class="math inline">\(\mathcal{F}^{-1} \{ \frac{2\alpha}{\omega^2 +
-\alpha^2} \} = e^{-\alpha |\tau|}\)</span> * <span
-class="math inline">\(\mathcal{F}^{-1} \{ \frac{2\beta}{\omega^2 +
-\beta^2} \} = e^{-\beta |\tau|}\)</span></p>
-<p>带入系数计算： <span class="math display">\[
+<p>这表明，<span class="math inline">\(X_{n+1}\)</span> 的分布仅由 <span
+class="math inline">\(X_n\)</span> 的值（以及独立的噪声 <span
+class="math inline">\(I_{n+1}\)</span>）决定，与更早的历史状态 <span
+class="math inline">\(X_{n-1}, \dots\)</span> 无关。</p>
+<p>因此，随机序列 <span class="math inline">\(\{X_n, n=1, 2,
+\cdots\}\)</span> <strong>是马尔可夫链</strong>。</p>
+<hr />
+<h2 id="section-2">3</h2>
+<p>这是一道关于<strong>独立增量过程（Random
+Walk）</strong>性质证明的经典题目。</p>
+<p>要证明一个随机过程是<strong>齐次马尔可夫链</strong>，我们需要验证两个核心条件：
+1.
+<strong>马尔可夫性（无后效性）</strong>：未来的状态只取决于现在的状态。
+2. <strong>齐次性（时不变性）</strong>：转移概率（或转移密度）不随时间
+<span class="math inline">\(n\)</span> 的变化而变化。</p>
+<p>因为 <span class="math inline">\(Y(n)\)</span> 是独立同分布随机变量
+<span class="math inline">\(X(k)\)</span> 的累加和，即 <span
+class="math inline">\(Y(n+1) = Y(n) +
+X(n+1)\)</span>，这种结构本身就强烈暗示了它是马氏链。</p>
+<p>下面针对两种情况分别证明。</p>
+<hr />
+<h3 id="通用逻辑递推关系">通用逻辑：递推关系</h3>
+<p>在这两个小题中，我们都利用同一个递推关系： <span
+class="math display">\[Y(n+1) = \sum_{k=1}^{n+1} X(k) = \left(
+\sum_{k=1}^{n} X(k) \right) + X(n+1) = Y(n) + X(n+1)\]</span></p>
+<p>由于 <span class="math inline">\(\{X(n)\}\)</span>
+是相互独立的，所以增量 <span class="math inline">\(X(n+1)\)</span>
+独立于过去的所有状态 <span class="math inline">\(Y(n), Y(n-1), \dots,
+Y(1)\)</span>。</p>
+<hr />
+<h3 id="证明当-xn-为伯努利序列时">(1) 证明：当 <span
+class="math inline">\(X(n)\)</span> 为伯努利序列时</h3>
+<p><strong>1. 验证马尔可夫性</strong> 对于任意的状态序列 <span
+class="math inline">\(i_0, i_1, \dots, i, j\)</span>，我们要考察： <span
+class="math display">\[P(Y(n+1) = j \mid Y(n) = i, Y(n-1) = i_{n-1},
+\dots, Y(1) = i_1)\]</span></p>
+<p>代入递推式 <span class="math inline">\(Y(n+1) = Y(n) +
+X(n+1)\)</span>： <span class="math display">\[
 \begin{aligned}
-R_Y(\tau) &amp;= \frac{\sigma^2 \alpha^2 \beta}{\beta^2 - \alpha^2}
-\left( \frac{1}{\alpha} e^{-\alpha |\tau|} - \frac{1}{\beta} e^{-\beta
-|\tau|} \right) \\
-&amp;= \frac{\sigma^2 \alpha^2 \beta}{\beta^2 - \alpha^2} \cdot
-\frac{1}{\alpha} e^{-\alpha |\tau|} - \frac{\sigma^2 \alpha^2
-\beta}{\beta^2 - \alpha^2} \cdot \frac{1}{\beta} e^{-\beta |\tau|} \\
-&amp;= \frac{\sigma^2 \alpha \beta}{\beta^2 - \alpha^2} e^{-\alpha
-|\tau|} - \frac{\sigma^2 \alpha^2}{\beta^2 - \alpha^2} e^{-\beta |\tau|}
+&amp;= P(Y(n) + X(n+1) = j \mid Y(n) = i, \dots) \\
+&amp;= P(i + X(n+1) = j \mid Y(n) = i, \dots) \\
+&amp;= P(X(n+1) = j - i \mid Y(n) = i, \dots)
 \end{aligned}
-\]</span></p>
-<p>提取公因式 <span class="math inline">\(\frac{\sigma^2 \alpha}{\beta^2
-- \alpha^2}\)</span>，得到最终结果：</p>
-<p><span class="math display">\[
-R_Y(\tau) = \frac{\sigma^2 \alpha}{\beta^2 - \alpha^2} \left( \beta
-e^{-\alpha |\tau|} - \alpha e^{-\beta |\tau|} \right)
-\]</span></p>
+\]</span> 由于 <span class="math inline">\(X(n+1)\)</span> 独立于 <span
+class="math inline">\(Y(n)\)</span> 及之前的历史，条件可以直接去掉：
+<span class="math display">\[= P(X(n+1) = j - i)\]</span> 这等于 <span
+class="math inline">\(P(Y(n+1)=j \mid
+Y(n)=i)\)</span>。所以，<strong>马尔可夫性成立</strong>。</p>
+<p><strong>2. 验证齐次性</strong> 我们需要看转移概率 <span
+class="math inline">\(p_{ij}(n) = P(X(n+1) = j-i)\)</span>
+是否依赖于时间 <span class="math inline">\(n\)</span>。</p>
+<p>由于 <span class="math inline">\(X(n)\)</span>
+是<strong>同分布</strong>的伯努利变量，取值只有 0 或 1： * 当 <span
+class="math inline">\(j = i\)</span> 时：<span
+class="math inline">\(P(X(n+1) = 0) = p\)</span> （原地不动） * 当 <span
+class="math inline">\(j = i + 1\)</span> 时：<span
+class="math inline">\(P(X(n+1) = 1) = q\)</span> （向前一步） *
+其他情况：概率为 0。</p>
+<p>可以看出，一步转移概率矩阵中的元素只与 <span class="math inline">\(p,
+q\)</span> 有关，与时间 <span class="math inline">\(n\)</span>
+无关。</p>
+<p><strong>结论</strong>： <span class="math inline">\(\{Y(n)\}\)</span>
+是一个状态空间为非负整数的<strong>齐次马尔可夫链</strong>。</p>
 <hr />
-<h3 id="总结答案">总结答案</h3>
-<ol type="1">
-<li><p><strong>均值函数</strong>： <span class="math display">\[m_Y(t) =
-0\]</span></p></li>
-<li><p><strong>相关函数</strong>： <span
-class="math display">\[R_Y(\tau) = \frac{\sigma^2 \alpha}{\beta^2 -
-\alpha^2} \left( \beta e^{-\alpha |\tau|} - \alpha e^{-\beta |\tau|}
-\right)\]</span></p></li>
-</ol>
-<p><strong>(检查提示)</strong>：注意到题目条件 <span
-class="math inline">\(\alpha \neq
-\beta\)</span>，这保证了分母不为零。如果 <span
-class="math inline">\(\alpha =
-\beta\)</span>，则需要对传递函数取极限或使用重根的逆变换方法，结果会包含
-<span class="math inline">\(t \cdot e^{-t}\)</span> 项。</p>
-<h2 id="section-8">21</h2>
-<p>这是一道证明<strong>均值各态历经性（Mean
-Ergodicity）</strong>的标准题目。</p>
-<p>证明的思路非常清晰：我们需要验证该过程的时间平均的方差在观测时间趋于无穷大时是否趋于
-0。</p>
-<p>以下是标准的证明步骤：</p>
-<h3 id="第一步确定协方差函数-c_xtau">第一步：确定协方差函数 <span
-class="math inline">\(C_X(\tau)\)</span></h3>
-<p>对于平稳过程，协方差函数定义为： <span class="math display">\[
-C_X(\tau) = R_X(\tau) - m_X^2
-\]</span> 已知题目条件： * <span class="math inline">\(m_X = 0\)</span>
-* <span class="math inline">\(R_X(\tau) = \sigma^2 e^{-\alpha
-|\tau|}\)</span></p>
-<p>因此： <span class="math display">\[
-C_X(\tau) = \sigma^2 e^{-\alpha |\tau|} - 0^2 = \sigma^2 e^{-\alpha
-|\tau|}
-\]</span></p>
-<h3
-id="第二步利用均值各态历经性的充分条件">第二步：利用均值各态历经性的充分条件</h3>
-<p><strong>定理（均值各态历经的充分条件）：</strong>
-如果平稳过程的协方差函数 <span class="math inline">\(C_X(\tau)\)</span>
-满足以下条件： <span class="math display">\[
-\lim_{T \to \infty} \frac{1}{2T} \int_{-2T}^{2T} C_X(\tau) d\tau = 0
-\]</span> 或者更严格的（Slutsky 定理）： <span class="math display">\[
-\lim_{T \to \infty} \frac{1}{T} \int_{0}^{2T} \left(1 -
-\frac{\tau}{2T}\right) C_X(\tau) d\tau = 0
-\]</span> 则该过程具有均值各态历经性。</p>
-<p>通常在考试中，使用第一个较宽松的充分条件（积分平均值为0）或者<strong>绝对可积性</strong>就足够了。</p>
-<p><strong>方法一：证明绝对可积（最快的方法）</strong> 如果 <span
-class="math inline">\(\int_{-\infty}^{+\infty} |C_X(\tau)| d\tau &lt;
-\infty\)</span>，则均值各态历经。 <span class="math display">\[
-\int_{-\infty}^{+\infty} \sigma^2 e^{-\alpha |\tau|} d\tau = 2
-\int_{0}^{+\infty} \sigma^2 e^{-\alpha \tau} d\tau = 2\sigma^2 \left[
--\frac{1}{\alpha} e^{-\alpha \tau} \right]_0^{+\infty} =
-\frac{2\sigma^2}{\alpha}
-\]</span> 因为 <span class="math inline">\(\sigma^2\)</span> 和 <span
-class="math inline">\(\alpha\)</span>
-都是常数，这个积分结果是一个有限值。 <strong>结论：</strong>
-满足充分条件，故具有均值各态历经性。</p>
+<h3 id="证明当-xn-sim-nmu-sigma2-时">(2) 证明：当 <span
+class="math inline">\(X(n) \sim N(\mu, \sigma^2)\)</span> 时</h3>
+<p>这属于连续状态马尔可夫链，我们通过条件概率密度函数（或条件分布函数）来证明。</p>
+<p><strong>1. 验证马尔可夫性</strong> 考察在已知历史状态下的条件分布：
+<span class="math display">\[P(Y(n+1) \le y \mid Y(n) = x, Y(n-1) =
+x_{n-1}, \dots)\]</span></p>
+<p>同样利用 <span class="math inline">\(Y(n+1) = Y(n) +
+X(n+1)\)</span>： <span class="math display">\[
+\begin{aligned}
+&amp;= P(Y(n) + X(n+1) \le y \mid Y(n) = x, \dots) \\
+&amp;= P(x + X(n+1) \le y \mid Y(n) = x, \dots) \\
+&amp;= P(X(n+1) \le y - x)
+\end{aligned}
+\]</span> 由于独立性，这等于 <span class="math inline">\(P(Y(n+1) \le y
+\mid Y(n) = x)\)</span>。所以，<strong>马尔可夫性成立</strong>。</p>
+<p><strong>2. 验证齐次性</strong> 我们需要看从状态 <span
+class="math inline">\(x\)</span> 转移到区域 <span
+class="math inline">\((-\infty, y]\)</span> 的概率（或者转移密度）是否随
+<span class="math inline">\(n\)</span> 变化。</p>
+<p>由上一步可知，转移概率取决于随机变量 <span
+class="math inline">\(X(n+1)\)</span> 的分布。 题目已知 <span
+class="math inline">\(X(n) \sim N(\mu, \sigma^2)\)</span>
+是<strong>同分布</strong>的。</p>
+<p>这意味着对于任何时间 <span
+class="math inline">\(n\)</span>，一步转移的概率密度函数始终为： <span
+class="math display">\[f(y \mid x) = f_{X}(y - x) =
+\frac{1}{\sqrt{2\pi}\sigma} \exp\left\{ -\frac{[(y-x) -
+\mu]^2}{2\sigma^2} \right\}\]</span></p>
+<p>这个密度函数里的参数 <span class="math inline">\(\mu, \sigma\)</span>
+都是常数，不含 <span class="math inline">\(n\)</span>。</p>
+<p><strong>结论</strong>： <span class="math inline">\(\{Y(n)\}\)</span>
+是一个状态空间为实数轴 <span class="math inline">\(\mathbb{R}\)</span>
+的<strong>齐次马尔可夫链</strong>。</p>
 <hr />
-<p><strong>方法二：利用极限定义推导（更严谨的考试写法）</strong></p>
-<p>我们要考察当 <span class="math inline">\(T \to \infty\)</span>
-时，时间平均的方差是否趋于 0。考察积分项：</p>
-<p><span class="math display">\[
-J(T) = \frac{1}{2T} \int_{-2T}^{2T} C_X(\tau) d\tau
-\]</span></p>
-<ol type="1">
-<li><p><strong>代入 <span
-class="math inline">\(C_X(\tau)\)</span></strong>：
-利用偶函数性质，将积分区间改为 <span class="math inline">\([0,
-2T]\)</span>： <span class="math display">\[
-\int_{-2T}^{2T} \sigma^2 e^{-\alpha |\tau|} d\tau = 2 \int_{0}^{2T}
-\sigma^2 e^{-\alpha \tau} d\tau
-\]</span></p></li>
-<li><p><strong>计算定积分</strong>： <span class="math display">\[
-= 2\sigma^2 \left[ -\frac{1}{\alpha} e^{-\alpha \tau} \right]_{0}^{2T} =
-\frac{2\sigma^2}{\alpha} (1 - e^{-2\alpha T})
-\]</span></p></li>
-<li><p><strong>计算极限</strong>： 将上述结果代回 <span
-class="math inline">\(J(T)\)</span>： <span class="math display">\[
-\lim_{T \to \infty} J(T) = \lim_{T \to \infty} \frac{1}{2T} \cdot
-\frac{2\sigma^2}{\alpha} (1 - e^{-2\alpha T})
-\]</span> 整理常数项： <span class="math display">\[
-= \lim_{T \to \infty} \frac{\sigma^2}{\alpha T} (1 - e^{-2\alpha T})
-\]</span></p></li>
-</ol>
-<ul>
-<li>当 <span class="math inline">\(T \to \infty\)</span> 时，<span
-class="math inline">\(\frac{1}{T} \to 0\)</span>。</li>
-<li>当 <span class="math inline">\(T \to \infty\)</span> 时，<span
-class="math inline">\((1 - e^{-2\alpha T}) \to 1\)</span>。</li>
-</ul>
-<p>因此： <span class="math display">\[
-\lim_{T \to \infty} J(T) = 0 \cdot 1 = 0
-\]</span></p>
-<h3 id="结论">结论</h3>
-<p>由于满足 <span class="math inline">\(\lim_{T \to \infty} \frac{1}{2T}
-\int_{-2T}^{2T} C_X(\tau) d\tau = 0\)</span>，故该平稳过程 <span
-class="math inline">\(\{X(t)\}\)</span> 的均值具有各态历经性。</p>
 </body>
 </html>
